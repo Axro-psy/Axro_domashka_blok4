@@ -4,32 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axro_domashka_block_4_1
+namespace Axro_domashka_4_2____this
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int sum = 0; //сумма всех элементов
-            Random rand = new Random();
-            Console.Write("Введите количество строк: ");
-            int row = int.Parse(Console.ReadLine());
-            Console.Write("Введите количество столбцов: ");
-            int col = int.Parse(Console.ReadLine());
+            Console.Write("Введите количество чисел в последовательности:\t");
+            int elementsCount = int.Parse(Console.ReadLine()); //назначаем переменную
+            int[] psld = new int[elementsCount]; //задаем массив из количества элементов, которые ввел пользователь
 
-            int[,] matrix = new int[row, col]; //массив задан
-            for (int i = 0; i < row; i++) //строки
+
+            for (int i = 0; i < psld.Length; i++)
             {
-                for (int j = 0; j < col; j++) //столбцы
-                {
-                    matrix[i, j] = rand.Next(100);
-                    Console.Write(matrix[i, j] + "\t");
-                    sum += matrix[i, j]; //считаем сумму 
-                }
-                Console.WriteLine();
-
+                Console.Write($"Введите число {i}:\t");
+                psld[i] = int.Parse(Console.ReadLine());
             }
-            Console.Write("Сумма элементов матрицы: " + sum);
+            Console.WriteLine("\nПоследовательность чисел:");
+            for (int i = 0; i < psld.Length; i++)
+            {
+                Console.WriteLine(psld[i]);
+            }
+            Console.WriteLine("\nЧтобы узнать самое большое и самое маленькое число нажмите ENTER");
+            Console.ReadLine();
+           
+            Console.WriteLine("\nНаименьшее число в последовательности:" + psld.Min());
+            Console.WriteLine("\nНаибольшее число в последовательности:" + psld.Max());
             Console.ReadLine();
         }
     }
