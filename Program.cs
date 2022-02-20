@@ -4,33 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axro_domashka_block_4_1
+namespace Ugadai_chislo_666
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int sum = 0; //сумма всех элементов
-            Random rand = new Random();
-            Console.Write("Введите количество строк: ");
-            int row = int.Parse(Console.ReadLine());
-            Console.Write("Введите количество столбцов: ");
-            int col = int.Parse(Console.ReadLine());
+            Random random = new Random();
+            Console.WriteLine("Введите самое большое число диапазона");
+            int maxnum = int.Parse(Console.ReadLine());
+            int correctnum = random.Next(0, maxnum);
+            int count = 0;
+            int usernum = 1;
 
-            int[,] matrix = new int[row, col]; //массив задан
-            for (int i = 0; i < row; i++) //строки
+            while (true)
             {
-                for (int j = 0; j < col; j++) //столбцы
+                Console.WriteLine("Введите число: ");
+                count++;
+                String input0 = Console.ReadLine();
+                if (input0 == "")
                 {
-                    matrix[i, j] = rand.Next(100);
-                    Console.Write(matrix[i, j] + "\t");
-                    sum += matrix[i, j]; //считаем сумму 
+                    Console.WriteLine("Жаль, что вы так быстро сдались. Правильное число: " + correctnum);
+                    break;
                 }
-                Console.WriteLine();
-
+                else if (input0 != "")
+                {
+                    usernum = Convert.ToInt32(input0);
+                    if (usernum > correctnum)
+                    {
+                        Console.WriteLine("загаданное число меньше");
+                    }
+                    else if (usernum < correctnum)
+                    {
+                        Console.WriteLine("загаданное число больше");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Число " + correctnum + " правильное! Количество попыток: " + count);
+                        break;
+                    }
+                }
             }
-            Console.Write("Сумма элементов матрицы: " + sum);
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
+
+
